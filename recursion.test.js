@@ -1,19 +1,25 @@
 /* Write a function to do the division operation without using the built-in division*/
 
-function division(dividend, divisor) {
+function division(dividend, dividedBy) {
   let quotient = 0;
-  let currentDivisor = divisor;
-  while (dividend >= currentDivisor) {
-    currentDivisor = currentDivisor + currentDivisor;
+  let sign = 1;
+
+  if (dividend < 0) {
+    sign = -sign;
+    dividend = -dividend;
   }
-  while (currentDivisor >= divisor) {
-    if (dividend >= currentDivisor) {
-      dividend = dividend - currentDivisor;
-      quotient = quotient + 1 * 1;
-    }
-    currentDivisor = currentDivisor / 2;
+
+  if (dividedBy < 0) {
+    sign = -sign;
+    dividedBy = -dividedBy;
   }
-  return quotient;
+
+  while (dividend >= dividedBy) {
+    dividend -= dividedBy;
+    quotient++;
+  }
+
+  return sign * quotient;
 }
 
 /* Write a function that implement Math.pow(x,n) but using recursion
@@ -24,18 +30,14 @@ pow(2,4) = 16
 function pow(x, n) {
   if (n === 0) {
     return 1;
-  }
-  if (n === 1) {
-    return x;
-  }
-  if (n < 0) {
+  } else if (n < 0) {
     return 1 / pow(x, -n);
+  } else if (n % 2 === 0) {
+    const y = pow(x, n / 2);
+    return y * y;
+  } else {
+    return x * pow(x, n - 1);
   }
-  const halfPow = pow(x, Math.floor(n / 2));
-  if (n % 2 === 0) {
-    return halfPow * halfPow;
-  }
-  return x * halfPow * halfPow;
 }
 
 /* The Fibonacci Series is a numeric series starting with the integers 0 and 1. In this series,
