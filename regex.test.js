@@ -4,18 +4,17 @@
 characters (no numbers and symbols) and it should end with capital A else return false */
 
 function capitalA(s) {
-  return /^[a-zA-Z]*A$/.test(s);
+  let test = /[a-zA-Z] A$/g.test(s);
+  return test;
 }
 
 /* Write a function that take a string and return true if the the sting is following the emails pattern
 which end with io (example@example.io) */
 
 function ioEmail(email) {
-  return /\.io$/.test(email);
+  let test = /^\w+@+\w+(.io)/g.test(email);
+  return test;
 }
-
-
-
 
 /* You have a text that contain image names with their extention you need to write a function to 
 find all images in that text and return their names and extention in an array 
@@ -41,8 +40,6 @@ describe("Test capitalA", () => {
     expect(capitalA("Hello world a")).toStrictEqual(false);
   });
 });
-
-
 
 describe("Test ioEmail", () => {
   test("It should return true if the input is in email format that end with .io", () => {
