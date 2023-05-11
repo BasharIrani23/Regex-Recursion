@@ -2,7 +2,7 @@
 
 function division(dividend, dividedBy) {
   if (dividend == 0 || dividedBy == 0) return 0;
-  else return dividend - division(number - dividedBy, dividedBy) - 1;
+  else return dividend - division(dividend - dividedBy, dividedBy) - 1;
 }
 
 /* Write a function that implement Math.pow(x,n) but using recursion
@@ -21,8 +21,8 @@ Write a function that take n as parameter and return the nth element in the Fibo
 Example: n = 4 ==> 3, n= 0 ==> 0, n = 3 ==> 2 */
 
 function fibonacci(n) {
-  // Write you logic here.
-  return;
+  if (n <= 1) return n;
+  else return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
 /* Optional 
